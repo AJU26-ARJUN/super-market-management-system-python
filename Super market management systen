@@ -1,0 +1,128 @@
+from datetime import datetime
+
+class Product:
+
+def _init_(self, name, price, quantity, expire_date):
+
+self.name = name
+
+self.price price
+
+self.quantity = quantity
+
+self.expire_date expire_date
+
+def is_expired(self):
+
+current_date datetime.now().date() return self.expire_date < current_date
+
+class Inventory:
+
+def __init_(self):
+
+self.products = {}
+
+def add product(self, product):
+
+if product.name in self.products:
+
+print(f"(product.name} already exists in the inventory.")
+
+else:
+
+self.products [product.name] = product
+
+print(f"(product.name} added to inventory.")
+
+def remove product(self, product_name):
+
+if product_name in self.products:
+
+del self.products [product_name]
+
+print(f"(product_name} removed from inventory.")
+
+else:
+
+print(f"(product_name) does not exist in the inventory.")
+
+def update_quantity(self, product_name, new_quantity):
+
+if product_name in self.products: new_quantity product_name].quantity
+
+self.products [ print(f"(product_name} quantity updated to {new_quantity) kg.")
+
+else:
+
+print(f"(product_name} does not exist in the inventory.")
+
+def display products(self):
+
+current_date datetime.now().date()
+
+print("\nInventory Products:")
+
+for product_name, product in self.products.items():
+
+if product.is_expired():
+
+print(f"Product: (product_name}, Price: (product.price), Quant ity: (product.quantity) kg (Expired)") else:
+print(f"Product: (product_name), Price: (product.price), Quant ity: {product.quantity) kg")
+
+#Create an instance of Inventory inventory Inventory()
+
+#Interact with the user for adding products to the inventory while True:
+
+choice input("Do you want to add a product to the inventory? (yes/no): ")
+
+if choice.lower() != 'yes':
+
+break
+
+name input("Enter product name: ")
+
+price float(input("Enter product price: "))
+
+quantity int(input("Enter product quantity (in kg): "))
+
+expire_date= input("Enter product expiration date (YYYY-MM-DD): ")
+
+expire_date datetime.strptime(expire_date, "%Y-%m-%d").date() product Product(name, price, quantity, expire_date)
+
+inventory.add_product(product)
+
+#Interact with the user for updating product quantity
+
+while True:
+
+choice input("Do you want to update quantity of a product? (yes/no): ")
+
+if choice.lower() != 'yes':
+
+name input("Enter product name to update quantity: ")
+
+break
+
+if name in inventory.products:
+
+new_quantity int(input("Enter new quantity (in kg): "))
+
+inventory.update_quantity(name, new_quantity)
+
+else:
+
+print(f"(name) does not exist in the inventory.")
+
+#Interact with the user for removing products from inventory while True:
+
+choice input("Do you want to remove a product from the inventory? (yes/n 0): ")
+
+if choice.lower() != 'yes':
+
+break
+
+name input("Enter product name to remove: ")
+
+inventory.remove_product(name)
+
+#Print the final inventory inventory.display_products()
